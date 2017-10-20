@@ -7,7 +7,7 @@ Recomended for python 2.7
 
 Using git :
 
-    $ git clone http://github.com/treerachai/LineMebot
+    $ git clone https://github.com/treerachai/LineMebot.git
 
 Python packages :
 
