@@ -57,29 +57,29 @@ def NOTIFIED_ACCEPT_GROUP_INVITATION(op):
         return
 
 #tracer.addOpInterrupt(17,NOTIFIED_ACCEPT_GROUP_INVITATION)
-#
+
 #def NOTIFIED_KICKOUT_FROM_GROUP(op):
-#    try:
-#        sendMessage(op.param1, client.getContact(op.param3).displayName + " Good Bye\n(*´･ω･*)")
-#    except Exception as e:
-#        print e
-#        print ("\n\nNOTIFIED_KICKOUT_FROM_GROUP\n\n")
-#        return
-#
+    #try:
+        #sendMessage(op.param1, client.getContact(op.param3).displayName + " Good Bye\n(*´･ω･*)")
+    #except Exception as e:
+        #print e
+        #print ("\n\nNOTIFIED_KICKOUT_FROM_GROUP\n\n")
+        #return
+
 #tracer.addOpInterrupt(19,NOTIFIED_KICKOUT_FROM_GROUP)
-#
+
 #def NOTIFIED_LEAVE_GROUP(op):
-#    try:
-#        sendMessage(op.param1, client.getContact(op.param2).displayName + " Good Bye\n(*´･ω･*)")
-#    except Exception as e:
-#        print e
-#        print ("\n\nNOTIFIED_LEAVE_GROUP\n\n")
-#        return#
-#
+    #try:
+        #sendMessage(op.param1, client.getContact(op.param2).displayName + " Good Bye\n(*´･ω･*)")
+    #except Exception as e:
+        #print e
+        #print ("\n\nNOTIFIED_LEAVE_GROUP\n\n")
+        #return
+
 #tracer.addOpInterrupt(15,NOTIFIED_LEAVE_GROUP)
 
 def NOTIFIED_READ_MESSAGE(op):
-    #print op
+    print op
     try:
         if op.param1 in wait['readPoint']:
             Name = client.getContact(op.param2).displayName
@@ -132,21 +132,7 @@ def SEND_MESSAGE(op):
                 else:
                     pass
             else:
-                pass						
-                if msg.text == "Tagall":
-		      group = client.getGroup(msg.to)
-		      mem = [contact.mid for contact in group.members]
-		      for mm in mem:
-		       xname = client.getContact(mm).displayName
-		       xlen = str(len(xname)+1)
-		       msg.contentType = 0
-                       msg.text = "@"+xname+" "
-		       msg.contentMetadata ={'MENTION':'{"MENTIONEES":[{"S":"0","E":'+json.dumps(xlen)+',"M":'+json.dumps(mm)+'}]}','EMTVER':'4'}
-		       try:
-                         client.sendMessage(msg)
-		       except Exception as error:
-                   	 print error		
-							
+                pass
         if msg.toType == 2:
             if msg.contentType == 0:
                 if msg.text == "mid":
