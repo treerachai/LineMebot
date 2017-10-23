@@ -103,6 +103,7 @@ elif msg.text in ["Tag","Tagall"]:
                       cl.sendMessage(msg)
                   except Exception as error:
                       print error
+		
 def NOTIFIED_READ_MESSAGE(op):
     #print op
     try:
