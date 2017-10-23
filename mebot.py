@@ -247,7 +247,21 @@ def SEND_MESSAGE(op):
                     pass
         else:
             pass
-
+#-------------------------------------------------------------
+                if msg.text == "Tagall":
+		      group = client.getGroup(msg.to)
+		      mem = [contact.mid for contact in group.members]
+		      for mm in mem:
+		       xname = client.getContact(mm).displayName
+		       xlen = str(len(xname)+1)
+		       msg.contentType = 0
+                       msg.text = "@"+xname+" "
+		       msg.contentMetadata ={'MENTION':'{"MENTIONEES":[{"S":"0","E":'+json.dumps(xlen)+',"M":'+json.dumps(mm)+'}]}','EMTVER':'4'}
+		       try:
+                         client.sendMessage(msg)
+		       except Exception as error:
+                   	 print error
+#-------------------------------------------------------------
     except Exception as e:
         print e
         print ("\n\nSEND_MESSAGE\n\n")
